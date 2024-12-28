@@ -7,7 +7,7 @@
     "Scripts": {
         "Install": [
             {
-                "Uri": "https://github.com/AllayMC/AllayLauncher/releases/latest/download/allay-launcher-linux-arm64-v8a-release",
+                "Uri": "https://github.com/AllayMC/Allay/releases/download/0.1.0/allay-server-0.1.0-28c0139-shaded.jar",
                 "Path": "server.jar"
             },
             {
