@@ -7,7 +7,7 @@
   "Scripts": {
     "Install": [
       {
-        "Uri": "https://raw.githubusercontent.com/skyportlabs/images_v2/main/python/requirements.txt",
+        "Uri": "https://raw.githubusercontent.com/G-flame/dockerimages-skyport/refs/heads/main/requirements.txt",
         "Path": "requirements.txt"
       }
     ]
