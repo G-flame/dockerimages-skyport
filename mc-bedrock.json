@@ -1,26 +1,22 @@
 {
-    "Image": "quay.io/skyport/java:21",
-    "Cmd": "docker pull quay.io/skyport/java:21",
-    "Env": [
-        "START=./allay"
-    ],
-    "Scripts": {
-        "Install": [
-            {
-                "Uri": "https://github.com/AllayMC/AllayLauncher/releases/latest/download/allay-launcher-linux-arm64-v8a-release",
-                "Path": "allay"
-            },
-            {
-                "Uri": "https://raw.githubusercontent.com/G-flame/dockerimages-skyport/refs/heads/main/README.md",
-                "Path": "README.md"
-            }
-        ]
-    },
-    "Name": "MC:bedrock",
-    "Description": "minecraft bedrock edition for skyport using the allay loader",
-    "Author": "thegreenflame1507@gmail.com",
-    "AuthorName": "G_flame",
-    "Meta": {
-        "Version": "0.01"
-    }
+  "Image": "quay.io/skyport/python:lts",
+  "Cmd": "",
+  "Env": [
+    "START=requirements.txt && endstone"
+  ],
+  "Scripts": {
+    "Install": [
+      {
+        "Uri": "https://raw.githubusercontent.com/skyportlabs/images_v2/main/python/requirements.txt",
+        "Path": "requirements.txt"
+      }
+    ]
+  },
+  "Name": "bedrock: endstone",
+  "Description": "well!",
+  "Author": "thegreenflame1507@gmail.com",
+  "AuthorName": "G-flame",
+  "Meta": {
+    "Version": "0.0.1"
+  }
 }
