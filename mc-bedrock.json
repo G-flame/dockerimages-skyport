@@ -2,7 +2,7 @@
   "Image": "quay.io/skyport/python:lts",
   "Cmd": "docker pull quay.io/skyport/python:lts",
   "Env": [
-    "START=requirements.txt && endstone"
+    "START=pip install endstone && endstone"
   ],
   "Scripts": {
     "Install": [
