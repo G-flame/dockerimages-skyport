@@ -2,13 +2,13 @@
   "Image": "quay.io/skyport/python:lts",
   "Cmd": "docker pull quay.io/skyport/python:lts",
   "Env": [
-    "START=pip install endstone && endstone"
+    "START=requirements.txt && endstone"
   ],
   "Scripts": {
     "Install": [
       {
-        "Uri": "https://raw.githubusercontent.com/G-flame/dockerimages-skyport/refs/heads/main/README.md",
-        "Path": "README.md"
+        "Uri": "https://raw.githubusercontent.com/skyportlabs/images_v2/main/python/requirements.txt",
+        "Path": "requirements.txt"
       }
     ]
   },
