@@ -2,7 +2,7 @@
   "Image": "endstone/endstone",
   "Cmd": "docker pull endstone/endstone",
   "Env": [
-    "START=docker run --rm -it -v ${PWD}:/home/endstone -p 19132:19132/udp endstone/endstone"
+    "START=endstone"
   ],
   "Scripts": {
     "Install": [
