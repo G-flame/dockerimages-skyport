@@ -1,14 +1,14 @@
 {
   "Image": "quay.io/skyport/python:lts",
-  "Cmd": "",
+  "Cmd": "docker pull quay.io/skyport/python:lts",
   "Env": [
     "START=pip install endstone && endstone"
   ],
   "Scripts": {
     "Install": [
       {
-        "Uri": "",
-        "Path": ""
+        "Uri": "https://raw.githubusercontent.com/G-flame/dockerimages-skyport/refs/heads/main/README.md",
+        "Path": "README.md"
       }
     ]
   },
