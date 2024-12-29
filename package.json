@@ -1,0 +1,120 @@
+{
+    "name": "jsprismarine",
+    "version": "0.0.0",
+    "description": "Dedicated Minecraft Bedrock Edition server written in TypeScript",
+    "prettier": "@nordcom/prettier",
+    "sideEffects": false,
+    "private": true,
+    "type": "module",
+    "workspaces": [
+        "packages/*"
+    ],
+    "packageManager": "pnpm@9.15.2",
+    "engines": {
+        "node": ">=21.0.0"
+    },
+    "scripts": {
+        "prepare": "husky || true",
+        "start": "node ./packages/server/dist/Server.es.js --warning --circular",
+        "dev": "pnpm --filter ./packages/server run dev",
+        "clean": "turbo run clean",
+        "build": "turbo run build --env-mode=loose",
+        "build:docs": "typedoc",
+        "build:watch": "turbo run build:watch --concurrency 32",
+        "server:build": "turbo run build --filter=@jsprismarine/server --env-mode=loose",
+        "test": "vitest run --coverage",
+        "typecheck": "turbo run typecheck",
+        "lint": "concurrently pnpm:lint:*",
+        "lint:eslint": "eslint packages/**/src/**/*.ts",
+        "lint:prettier": "prettier packages/**/src/**/*.* --check",
+        "format": "concurrently pnpm:format:*",
+        "format:eslint": "eslint  --fix packages/**/src/**/*.ts",
+        "format:prettier": "prettier --write packages/**/src/**/*.*",
+        "package": "bun build --sourcemap --compile ./packages/server/src/Server.ts --outfile ./dist/prismarine",
+        "version": "changeset version",
+        "postversion": "pnpm install",
+        "create": "turbo gen",
+        "version:unstable": "changeset version --snapshot unstable",
+        "release": "changeset publish",
+        "release:unstable": "changeset publish --snapshot --no-git-tag --tag unstable",
+        "changeset": "changeset",
+        "buildit": "./buildit.sh"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/JSPrismarine/JSPrismarine.git"
+    },
+    "keywords": [
+        "javascript",
+        "typescript",
+        "minecraft",
+        "mcpe",
+        "bedrock",
+        "be"
+    ],
+    "author": "JSPrismarine && G-flame",
+    "contributors": [
+        {
+            "name": "Filiph Siitam Sandström",
+            "email": "filiph@nordcom.io",
+            "url": "https://nordcom.io/"
+        },
+        {
+            "name": "Enrico Angelon",
+            "email": "enricoangelon.ea@gmail.com",
+            "url": "https://enricoangelon.it/"
+        }
+    ],
+    "license": "MPL-2.0",
+    "bugs": {
+        "url": "https://github.com/JSPrismarine/JSPrismarine/issues"
+    },
+    "homepage": "https://jsprismarine.org/",
+    "devDependencies": {
+        "@changesets/changelog-github": "0.5.0",
+        "@changesets/cli": "2.27.11",
+        "@changesets/types": "6.0.0",
+        "@codecov/vite-plugin": "1.6.0",
+        "@nordcom/prettier": "0.1.1",
+        "@turbo/gen": "2.3.3",
+        "@types/heap": "0.2.34",
+        "@types/node": "22.10.2",
+        "@typescript-eslint/eslint-plugin": "8.18.2",
+        "@typescript-eslint/parser": "8.18.2",
+        "@vitest/coverage-v8": "2.1.8",
+        "concurrently": "9.1.1",
+        "cross-env": "7.0.3",
+        "eslint-config-prettier": "9.1.0",
+        "eslint-plugin-import": "2.31.0",
+        "eslint-plugin-jsdoc": "50.6.1",
+        "eslint-plugin-prettier": "5.2.1",
+        "eslint-plugin-unused-imports": "4.1.4",
+        "eslint": "8.57.1",
+        "esmock": "2.6.9",
+        "glob": "11.0.0",
+        "husky": "9.1.7",
+        "lint-staged": "15.3.0",
+        "nodemon": "3.1.9",
+        "prettier-eslint": "16.3.0",
+        "prettier": "3.4.2",
+        "ts-mockito": "2.6.1",
+        "turbo-ignore": "2.3.3",
+        "turbo": "2.3.3",
+        "typedoc-material-theme": "1.2.0",
+        "typedoc-plugin-extras": "3.1.0",
+        "typedoc-plugin-merge-modules": "6.1.0",
+        "typedoc-plugin-rename-defaults": "0.7.2",
+        "typedoc": "0.27.6",
+        "typescript": "5.5.2",
+        "vite-plugin-dts": "4.4.0",
+        "vite-tsconfig-paths": "5.1.4",
+        "vite": "6.0.6",
+        "vitest": "2.1.8"
+    },
+    "dependencies": {
+        "@jsprismarine/bedrock-data": "workspace:*",
+        "@jsprismarine/brigadier": "workspace:*",
+        "@jsprismarine/jsbinaryutils": "5.5.3",
+        "@jsprismarine/minecraft": "workspace:*"
+    }
+}
