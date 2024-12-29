@@ -1,22 +1,26 @@
 {
-  "Image": "endstone/endstone",
-  "Cmd": "docker pull endstone/endstone",
-  "Env": [
-    "START=endstone"
-  ],
-  "Scripts": {
-    "Install": [
-      {
-        "Uri": "https://raw.githubusercontent.com/G-flame/dockerimages-skyport/refs/heads/main/requirements.txt",
-        "Path": "requirements.txt"
-      }
-    ]
-  },
-  "Name": "bedrock: endstone",
-  "Description": "well!",
-  "Author": "thegreenflame1507@gmail.com",
-  "AuthorName": "G-flame",
-  "Meta": {
-    "Version": "0.0.1"
+    "Image": "quay.io/skyport/nodejs:lts",
+    "Cmd": "",
+    "Env": [
+      "START=npm run buildit; npm start"
+    ],
+    "Scripts": {
+      "Install": [
+        {
+          "Uri": "https://raw.githubusercontent.com/G-flame/dockerimages-skyport/refs/heads/main/package.json",
+          "Path": "package.json"
+        },
+        {
+            "Uri": "https://raw.githubusercontent.com/G-flame/dockerimages-skyport/refs/heads/main/buildit.sh"
+            "Path": "buildit.sh"
+        }
+      ]
+    },
+    "Name": "JSPrismarine",
+    "Description": "a bsd",
+    "Author": "thegreenflame1507@gmail.com",
+    "AuthorName": "G-flame",
+    "Meta": {
+      "Version": "0.1"
+    }
   }
-}
