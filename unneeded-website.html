@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DockerProjects Ecosystem</title>
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #1e1e1e;
+      color: #fff;
+    }
+
+    .hero {
+      background-image: url('https://via.placeholder.com/1920x1080.png?text=DockerProjects+Ecosystem');
+      background-size: cover;
+      background-position: center;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 40px;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #006400;
+      color: #fff;
+      text-decoration: none;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .btn:hover {
+      background-color: #009100;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .section {
+      margin-bottom: 60px;
+    }
+
+    .section h2 {
+      color: #006400;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      animation: slideIn 0.5s ease-in-out;
+    }
+
+    .section p {
+      line-height: 1.6;
+      font-size: 1.1rem;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 40px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .feature-card {
+      background-color: #2c2c2c;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .feature-card h3 {
+      color: #006400;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    footer {
+      background-color: #006400;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="hero">
+    <h1>DockerProjects Ecosystem</h1>
+    <p>Revolutionize your server management with cutting-edge Docker-powered solutions.</p>
+    <a href="#quick-installation" class="btn">Get Started</a>
+  </div>
+
+  <div class="container">
+    <section id="quick-installation" class="section">
+      <h2>🚀 Quick Installation</h2>
+      <p>Streamline your server setup with our one-click Docker container installation process.</p>
+      <pre><code>curl -sSL https://github.com/g-flame/dockerimages-skyport/raw/refs/heads/main/assets/other/bedrock-server/bsd-installer.sh | bash</code></pre>
+      <p>Experience seamless server deployment with our Bedrock Server Docker (BSD) Installer.</p>
+    </section>
+
+    <section id="project-catalog" class="section">
+      <h2>🔨 Project Catalog</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Skyport Minecraft Eggs 🎮</h3>
+          <p>Streamlined Docker images for Minecraft server environments, including Fabric Minecraft 1.21 and 1.21.3.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Bedrock Server Docker (BSD) 🧱</h3>
+          <p>Automated Docker container setup for Minecraft Bedrock servers, featuring simplified installation, automatic configuration, and robust volume management.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Future Projects 🚀</h3>
+          <p>Stay tuned for more innovative Docker-powered solutions coming soon to the DockerProjects Ecosystem.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="community-contributions" class="section">
+      <h2>🤝 Community Contributions</h2>
+      <p>Your ideas and contributions are the driving force behind the growth of the DockerProjects Ecosystem. Get involved today!</p>
+      <ul>
+        <li>🐛 Report Issues: Identify and document bugs</li>
+        <li>✨ Propose Features: Share innovative ideas</li>
+        <li>🔧 Pull Requests: Submit code improvements</li>
+        <li>📖 Documentation: Enhance project knowledge base</li>
+      </ul>
+    </section>
+
+    <section id="acknowledgements" class="section">
+      <h2>🏆 Acknowledgements</h2>
+      <p>We extend our heartfelt gratitude to the talented individuals and organizations that have contributed to the success of the DockerProjects Ecosystem:</p>
+      <ul>
+        <li>Skyport Labs: Innovative platform creators</li>
+        <li>g-flame: Primary maintainer and developer</li>
+        <li>Open Source Community: Continuous support and collaboration</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2023 DockerProjects. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // JavaScript Functionality (if any)
+  </script>
+
+
+</body></html>
