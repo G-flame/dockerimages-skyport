@@ -1,70 +1,30 @@
-# 🐳 DockerProjects Ecosystem
+# 🐳 docker & skyport images
 
-## 🌟 Overview
+## Overview
 
-Welcome to DockerProjects, a comprehensive collection of Docker-powered solutions designed to simplify server management and deployment across various platforms!
+> I make various docker based projects in this repo and publish them to fix the problem that i faced thes are mainly focused to fix issues for arm64 devices but are fully compatible with amd64 too .
 
-## 🚀 Quick Installation
+## Projects
 
-### Bedrock Server Docker (BSD) Installer
-
+#  BSD [Bedrock Server Docker](https://github.com/g-flame/dockerimages-skyport/tree/main/assets/other/bedrock-server)
+>> It is docker container that runs with presistance and it comes with a command line tool that makes it easy to start stop and view logs about the conatiner it works with arm64 and amd64 devices .
+ **Installation**
 ```bash
 curl -sSL https://github.com/g-flame/dockerimages-skyport/raw/refs/heads/main/assets/other/bedrock-server/bsd-installer.sh | bash
 ```
 
-🔧 One-click Docker container setup for seamless server deployment
+#  [Skyport Images](https://github.com/g-flame/dockerimages-skyport/tree/main/assets/skyport)
+>> Docker images files for skyport panel to run various minecraft server software for java edition works on arm64 and amd64 devices .
+---
+# OTHER INFO
+---
+##  Tech Stack
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Bash Script](https://img.shields.io/badge/bash_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) ![JSON](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 
-## 🔨 Project Catalog
+##  Acknowledgements
 
-1. **Skyport Minecraft Eggs 🎮**
-   Streamlined Docker images for Minecraft server environments:
+- **SkyportLabs**: Creators of skyport panel and daemon
+- **g-flame**: Primary maintainer and developer (ME)
 
-   - Fabric Minecraft 1.21
-     - Modded server with full Fabric support
-     - Cutting-edge Minecraft modifications
-   - Fabric Minecraft 1.21.3
-     - Latest stable Minecraft version
-     - Optimized performance and bug fixes
 
-2. **Bedrock Server Docker (BSD) 🧱**
-   Automated Docker container setup for Minecraft Bedrock servers:
-   - Simplified installation process
-   - Automatic Docker configuration
-   - Robust volume management
 
-## 🤝 Community Contributions
-
-### How to Contribute
-
-- **🐛 Report Issues**: Identify and document bugs
-- **✨ Propose Features**: Share innovative ideas
-- **🔧 Pull Requests**: Submit code improvements
-- **📖 Documentation**: Enhance project knowledge base
-
-Contributions from the community are always welcome! 🙌
-
-## 🏆 Acknowledgements
-
-- **Skyport Labs**: Innovative platform creators
-- **g-flame**: Primary maintainer and developer
-- **Open Source Community**: Continuous support and collaboration
-
-## 🛠️ Technology Stack
-
-- **Docker**: Containerization
-- **Bash**: Automation scripts
-- **JSON**: Configuration management
-
-## 🌐 Useful Resources
-
-- [Skyport Panel](https://skyport.ovh/)
-- [Docker Documentation](https://docs.docker.com/)
-- [Minecraft Official Site](https://www.minecraft.net/)
-
-## 💡 Support the Project
-
-- **⭐ Star the repository**
-- **📣 Share with the community**
-- **🤲 Contribute code or documentation**
-
-Made with ❤️ by the DockerProjects Team
