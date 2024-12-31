@@ -10,7 +10,9 @@ NC='\033[0m'
 git-pull() {
     mkdir -p /tmp/bsd
     cd /tmp/bsd
-    curl -o "/tmp/bsd/urls.txt" https://raw.githubusercontent.com/g-flame/dockerimages-skyport/refs/heads/main/assets/other/bedrock-server/urls.txt
+    wget https://github.com/g-flame/dockerimages-skyport/raw/refs/heads/main/assets/other/bedrock-server/docker-compose.yml
+    wget https://github.com/g-flame/dockerimages-skyport/raw/refs/heads/main/assets/other/bedrock-server/bsd
+    wget https://github.com/g-flame/dockerimages-skyport/raw/refs/heads/main/assets/other/bedrock-server/.env
 
     if [[ -s "/tmp/bsd/urls.txt" ]]; then
         while read -r url; do
