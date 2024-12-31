@@ -1,0 +1,66 @@
+#/bin/bash
+#
+#
+DIR='/etc/bsd/'
+#
+#
+##EG: '/home/user/path/'
+#                     | this '/' is important please mention it in the file !!
+## enter the directory of the install
+#
+# |            SCRIPT BY g-flame
+# |            github.com/g-flame
+# | for issues and bugs contact me through my github
+## DO NOT EDIT BEYOND THIS UNLESS YOU KNOW WHAT YOU ARE DOING !!
+#
+#
+#colours
+RED='\033[0;31m'
+NC='\033[0m'
+#root check
+# Init/Start script
+FILE="/tmp/out.$$"
+GREP="/bin/grep"
+#....
+# Make sure only root can run our script
+if [ "$(id -u)" != "0" ]; then
+   echo -e "${RED}This script must be run as root${NC}" 1>&2
+   exit 1
+fi
+## args
+# Show usage function
+show_usage() {
+    echo "please run as root as docker requirees it !"
+    echo "Usage: $0 [start|stop|logs]"
+    echo "  start - Start the bsd"
+    echo "  stop  - Stop the bsd"
+    echo "  logs  - Show bsd logs"
+}
+#
+# Check if an argument was provided
+if [ $# -eq 0 ]; then
+    show_usage
+    exit 1
+fi
+#
+# Handle different arguments
+case "$1" in
+    "start")
+        echo "Starting the application..."
+        docker-compose -f ${DIR}docker-compose.yml up -d
+        ;;
+    "stop")
+        echo "Stopping the application..."
+        docker-compose -f ${DIR}docker-compose.yml down
+        ;;
+    "logs")
+        echo "Showing logs..."
+        docker logs -f mc-bedrock
+        ;;
+    *)
+        show_usage
+        exit 1
+        ;;
+esac
+#
+#THANK YOU FOR USING MY SCRIPT !!
