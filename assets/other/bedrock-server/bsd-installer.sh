@@ -1,15 +1,20 @@
 #!/bin/bash
 set -e
-
+## i hardcoded the directories to make sure that i do't make mistakes!!
 ## Functions
 git-pull() {
     mkdir -p /tmp/bsd
     cd /tmp/bsd
-    curl -o /tmp/bsd/urls.txt https://raw.githubusercontent.com/g-flame/dockerimages-skyport/refs/heads/main/assets/other/bedrock-server/urls.txt
+ curl -o "/tmp/bsd/urls.txt" https://raw.githubusercontent.com/g-flame/dockerimages-skyport/refs/heads/main/assets/other/bedrock-server/urls.txt
 
-    while read -r url; do
-        curl -o /tmp/bsd/$(basename "$url") "$url"
-    done < /tmp/bsd/urls.txt
+    if [[ -s "/tmp/bsd/urls.txt" ]]; then
+        while read -r url; do
+            curl -o "/tmp/bsd/$(basename "$url")" "$url"
+        done < "/tmp/bsd/urls.txt"
+    else
+        echo "Error: urls.txt is empty or missing."
+        exit 1
+    fi
 }
 
 docker-pull() {
@@ -69,16 +74,20 @@ ui() {
     echo "BEDROCK SERVER DOCKER INSTALLER V1.0"
     echo "lite cli-ui v0.01"
     echo "START INSTALL ?"
-    select yn in "Yes" "No"
-case $yn in
-    Yes ) make install
-            git-pull
-            docker-detect
-            docker-pull
-            echo "install complete!"
-            ;;
-    No ) exit;;
-esac
+    select yn in "Yes" "No"; do
+        case $yn in
+            Yes ) git-pull; docker-detect; docker-pull; break;;
+            No ) exit;;
+            * ) echo "Invalid selection. Please choose Yes or No.";;
+        esac
+    done
 }
 ## the actual Fing script
 
+# Make sure only root can run our script
+if [ "$(id -u)" != "0" ]; then
+   echo -e "${RED}This script must be run as root${NC}" 1>&2
+   exit 1
+fi
+
+ui
