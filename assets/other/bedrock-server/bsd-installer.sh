@@ -142,8 +142,6 @@ docker-detect() {
         esac
     fi
 }
-
-ui() {
 ui() {
     clear
     echo "================================"
