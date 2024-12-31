@@ -8,20 +8,25 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 git-pull() {
-    mkdir -p /tmp/bsd
-    cd /tmp/bsd
-    wget https://github.com/g-flame/dockerimages-skyport/raw/refs/heads/main/assets/other/bedrock-server/docker-compose.yml
-    wget https://github.com/g-flame/dockerimages-skyport/raw/refs/heads/main/assets/other/bedrock-server/bsd
-    wget https://github.com/g-flame/dockerimages-skyport/raw/refs/heads/main/assets/other/bedrock-server/.env
+    BASE_URL="https://raw.githubusercontent.com/g-flame/dockerimages-skyport/main/assets/other/bedrock-server"
 
-    if [[ -s "/tmp/bsd/urls.txt" ]]; then
-        while read -r url; do
-            curl -o "/tmp/bsd/$(basename "$url")" "$url"
-        done < "/tmp/bsd/urls.txt"
-    else
-        echo "Error: urls.txt is empty or missing."
-        exit 1
-    fi
+# List of files to download
+FILES=(
+    "bsd"
+    "bsd-installer.sh"
+    "docker-compose.yml"
+    ".env"
+
+)
+
+# Download each file
+for file in "${FILES[@]}"; do
+    echo "Downloading: $file"
+    curl -sLO "$BASE_URL/$file"
+done
+
+echo "Downloads complete. Files saved in /tmp/bsd"
+ls -l /tmp/bsd
 }
 
 docker-pull() {
