@@ -8,25 +8,12 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 git-pull() {
-    BASE_URL="https://raw.githubusercontent.com/g-flame/dockerimages-skyport/main/assets/other/bedrock-server"
-
-# List of files to download
-FILES=(
-    "bsd"
-    "bsd-installer.sh"
-    "docker-compose.yml"
-    ".env"
-
-)
-
-# Download each file
-for file in "${FILES[@]}"; do
-    echo "Downloading: $file"
-    curl -sLO "$BASE_URL/$file"
-done
-
+  mkdir -p /tmp/bsd
+  cd /tmp/bsd
+  curl -sLO https://raw.githubusercontent.com/g-flame/dockerimages-skyport/main/assets/other/bedrock-server/bedrock-server.zip
 echo "Downloads complete. Files saved in /tmp/bsd"
 ls -l /tmp/bsd
+unzip bedrock-server.zip
 }
 
 docker-pull() {
