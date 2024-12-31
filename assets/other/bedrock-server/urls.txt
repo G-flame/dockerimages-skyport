@@ -1,0 +1,3 @@
+https://github.com/g-flame/dockerimages-skyport/raw/refs/heads/main/assets/other/bedrock-server/docker-compose.yml
+https://github.com/g-flame/dockerimages-skyport/raw/refs/heads/main/assets/other/bedrock-server/bsd
+https://github.com/g-flame/dockerimages-skyport/raw/refs/heads/main/assets/other/bedrock-server/.env
