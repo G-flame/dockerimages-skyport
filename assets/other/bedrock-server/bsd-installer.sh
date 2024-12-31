@@ -1,38 +1,72 @@
 #!/bin/bash
 set -e
+
+# Ensure proper terminal handling for piped input
+if [ ! -t 0 ]; then
+    exec </dev/tty
+fi
+
 ## i hardcoded the directories to make sure that i do't make mistakes!!
 ## Functions
+
+# Color definitions for better visibility
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
 git-pull() {
     mkdir -p /tmp/bsd
     cd /tmp/bsd
- curl -o "/tmp/bsd/urls.txt" https://raw.githubusercontent.com/g-flame/dockerimages-skyport/refs/heads/main/assets/other/bedrock-server/urls.txt
+    echo -e "${GREEN}Downloading required files...${NC}"
+    
+    if ! curl -sSL -o "/tmp/bsd/urls.txt" "https://raw.githubusercontent.com/g-flame/dockerimages-skyport/refs/heads/main/assets/other/bedrock-server/urls.txt"; then
+        echo -e "${RED}Failed to download urls.txt${NC}"
+        exit 1
+    fi
 
     if [[ -s "/tmp/bsd/urls.txt" ]]; then
         while read -r url; do
-            curl -o "/tmp/bsd/$(basename "$url")" "$url"
+            echo "Downloading: $(basename "$url")"
+            if ! curl -sSL -o "/tmp/bsd/$(basename "$url")" "$url"; then
+                echo -e "${RED}Failed to download $(basename "$url")${NC}"
+                exit 1
+            fi
         done < "/tmp/bsd/urls.txt"
     else
-        echo "Error: urls.txt is empty or missing."
+        echo -e "${RED}Error: urls.txt is empty or missing.${NC}"
         exit 1
     fi
 }
 
 docker-pull() {
-    docker pull itzg/minecraft-bedrock-server
+    echo -e "${GREEN}Pulling Docker image...${NC}"
+    if ! docker pull itzg/minecraft-bedrock-server; then
+        echo -e "${RED}Failed to pull Docker image${NC}"
+        exit 1
+    fi
+    
     mkdir -p /etc/bsd/
-    mv /tmp/bsd/* /etc/bsd/
-    mv /etc/bsd/bsd /usr/local/bin/
-    echo "INSTALL COMPLETE!"
+    if ! mv /tmp/bsd/* /etc/bsd/; then
+        echo -e "${RED}Failed to move files to /etc/bsd/${NC}"
+        exit 1
+    fi
+
+    if ! mv /etc/bsd/bsd /usr/local/bin/; then
+        echo -e "${RED}Failed to move bsd to /usr/local/bin/${NC}"
+        exit 1
+    fi
+
+    chmod +x /usr/local/bin/bsd
+    echo -e "${GREEN}INSTALL COMPLETE!${NC}"
     ui
 }
 
 docker-detect() {
-    DOCKER_CMD=$(which docker)
-    if [[ ! -z $DOCKER_CMD ]]; then
-        echo "Docker is installed, continuing..."
+    if command -v docker >/dev/null 2>&1; then
+        echo -e "${GREEN}Docker is installed, continuing...${NC}"
     else
-        echo "Docker not found. Installing..."
-        OS=$(uname -s | tr 'A-Z' 'a-z')
+        echo -e "${RED}Docker not found. Installing...${NC}"
+        OS=$(uname -s | tr '[:upper:]' '[:lower:]')
 
         case $OS in
         linux)
@@ -47,101 +81,31 @@ docker-detect() {
                 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
                 apt-get update
                 apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+                systemctl start docker
+                systemctl enable docker
                 docker run hello-world
                 ;;
             fedora|rhel|centos)
-                yum update -y
-                yum install -y dnf-plugins-core
+                dnf -y install dnf-plugins-core
                 dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-                dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-                systemctl enable --now docker
+                dnf -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+                systemctl start docker
+                systemctl enable docker
                 ;;
             *)
-                echo "Unsupported OS. Please install Docker manually to continue!"
+                echo -e "${RED}Unsupported OS. Please install Docker manually to continue!${NC}"
                 exit 1
                 ;;
             esac
             ;;
         *)
-            echo "Unsupported OS. Please install Docker manually to continue!"
+            echo -e "${RED}Unsupported OS. Please install Docker manually to continue!${NC}"
             exit 1
             ;;
         esac
     fi
 }
 
-ui() {
-#!/bin/bash
-set -e
-## i hardcoded the directories to make sure that i do't make mistakes!!
-## Functions
-git-pull() {
-    mkdir -p /tmp/bsd
-    cd /tmp/bsd
- curl -o "/tmp/bsd/urls.txt" https://raw.githubusercontent.com/g-flame/dockerimages-skyport/refs/heads/main/assets/other/bedrock-server/urls.txt
-
-    if [[ -s "/tmp/bsd/urls.txt" ]]; then
-        while read -r url; do
-            curl -o "/tmp/bsd/$(basename "$url")" "$url"
-        done < "/tmp/bsd/urls.txt"
-    else
-        echo "Error: urls.txt is empty or missing."
-        exit 1
-    fi
-}
-
-docker-pull() {
-    docker pull itzg/minecraft-bedrock-server
-    mkdir -p /etc/bsd/
-    mv /tmp/bsd/* /etc/bsd/
-    mv /etc/bsd/bsd /usr/local/bin/
-    echo "INSTALL COMPLETE!"
-    ui
-}
-
-docker-detect() {
-    DOCKER_CMD=$(which docker)
-    if [[ ! -z $DOCKER_CMD ]]; then
-        echo "Docker is installed, continuing..."
-    else
-        echo "Docker not found. Installing..."
-        OS=$(uname -s | tr 'A-Z' 'a-z')
-
-        case $OS in
-        linux)
-            source /etc/os-release
-            case $ID in
-            debian|ubuntu|mint)
-                apt-get update
-                apt-get install -y ca-certificates curl
-                install -m 0755 -d /etc/apt/keyrings
-                curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-                chmod a+r /etc/apt/keyrings/docker.asc
-                echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
-                apt-get update
-                apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-                docker run hello-world
-                ;;
-            fedora|rhel|centos)
-                yum update -y
-                yum install -y dnf-plugins-core
-                dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-                dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-                systemctl enable --now docker
-                ;;
-            *)
-                echo "Unsupported OS. Please install Docker manually to continue!"
-                exit 1
-                ;;
-            esac
-            ;;
-        *)
-            echo "Unsupported OS. Please install Docker manually to continue!"
-            exit 1
-            ;;
-        esac
-    fi
-}
 ui() {
     clear
     echo "================================"
@@ -172,16 +136,7 @@ ui() {
         esac
     done
 }
-## the actual Fing script
-##
-# Make sure only root can run our script
-if [ "$(id -u)" != "0" ]; then
-   echo -e "${RED}This script must be run as root${NC}" 1>&2
-   exit 1
-fi
 
-ui
-}
 ## the actual Fing script
 
 # Make sure only root can run our script
@@ -190,4 +145,8 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
+# Set up trap to clean up temporary files on exit
+trap 'rm -rf /tmp/bsd' EXIT
+
+# Start the installation
 ui
