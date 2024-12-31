@@ -1,4 +1,5 @@
-#/bin/bash
+#!/bin/bash
+
 #
 #
 DIR='/etc/bsd/'
@@ -30,7 +31,7 @@ fi
 ## args
 # Show usage function
 show_usage() {
-    echo "please run as root as docker requirees it !"
+    echo "please run as root as docker requires it!"
     echo "Usage: $0 [start|stop|logs]"
     echo "  start - Start the bsd"
     echo "  stop  - Stop the bsd"
