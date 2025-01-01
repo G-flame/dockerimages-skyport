@@ -58,7 +58,7 @@ show_usage() {
     echo "  start - Start the container"
     echo "  stop  - Stop the container"
     echo "  logs  - Show container logs"
-    echo
+    echo "Note: To accept EULA go /etc/bsd and edit the docker-compose.yml"
     echo "Note: This script must be run as root"
 }
 
