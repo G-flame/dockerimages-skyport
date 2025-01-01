@@ -1,6 +1,8 @@
 # Skyport Eggs for the Skyport Panel
 
-This repository contains custom Skyport Eggs for Minecraft, specifically designed for the Skyport Panel. These eggs allow you to easily set up and manage different versions of Minecraft servers using Docker.
+- i have also archive older skyport images as they still work you can use them in here
+
+- This repository contains custom Skyport Eggs for Minecraft, specifically designed for the Skyport Panel. These eggs allow you to easily set up and manage different versions of Minecraft servers using Docker.
 
 ## Available Eggs
 
