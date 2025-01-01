@@ -28,7 +28,7 @@ docker-pull() {
     mkdir -p /etc/bsd/
     mv /tmp/bsd/* /etc/bsd/
     mv /etc/bsd/bsd /usr/local/bin/
-    sed -i -e 's/\r$//' /usr/local/bin/bsd
+    chmod +x /usr/local/bin/bsd
     bsd 
     echo "INSTALL COMPLETE!"
 }

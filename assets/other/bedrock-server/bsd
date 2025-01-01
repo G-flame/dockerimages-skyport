@@ -78,7 +78,7 @@ fi
 check_docker
 check_docker_compose
 check_compose_file
-
+sed -i -e 's/\r$//' /usr/local/bin/bsd
 # Handle commands
 case "$1" in
     "start")
