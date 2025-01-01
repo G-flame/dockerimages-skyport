@@ -29,7 +29,6 @@ docker-pull() {
     mv /tmp/bsd/* /etc/local/bsd/
     mv /etc/bsd/bsd /usr/local/bin/
     sed -i -e 's/\r$//' /usr/local/bin/bsd
-    bsd 
     echo "INSTALL COMPLETE!"
 }
 
@@ -69,11 +68,6 @@ docker-detect() {
                 ;;
             esac
             ;;
-        *)
-            echo "Unsupported OS. Please install Docker manually to continue!"
-            exit 1
-            ;;
-        esac
     fi
 }
 
