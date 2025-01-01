@@ -26,9 +26,9 @@ unzip bedrock-server.zip
 docker-pull() {
     docker pull itzg/minecraft-bedrock-server
     mkdir -p /etc/bsd/
-    mv /tmp/bsd/* /etc/bsd/
-    mv /etc/bsd/bsd /usr/bin/
-    chmod +x /usr/bin/bsd
+    mv /tmp/bsd/* /etc/local/bsd/
+    mv /etc/bsd/bsd /usr/local/bin/
+    sed -i -e 's/\r$//' /usr/local/bin/bsd
     bsd 
     echo "INSTALL COMPLETE!"
 }
