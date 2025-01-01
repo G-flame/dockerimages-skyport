@@ -15,9 +15,7 @@ sudo bash -c "$(curl -fsSL https://github.com/g-flame/dockerimages-skyport/raw/r
 
 #  [Skyport Images](https://github.com/g-flame/dockerimages-skyport/tree/main/assets/skyport)
 >> Docker images files for skyport panel to run various minecraft server software for java edition works on arm64 and amd64 devices .
----
-# OTHER INFO
----
+
 ##  Tech Stack
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Bash Script](https://img.shields.io/badge/bash_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) ![JSON](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 
