@@ -1,4 +1,11 @@
 #!/bin/bash
+# Make sure only root can run our script
+if [ "$(id -u)" != "0" ]; then
+   echo -e "${RED}This script must be run as root${NC}" 1>&2
+   exit 1
+fi
+
+
 set -e
 ## i hardcoded the directories to make sure that i do't make mistakes!!
 ## Functions
@@ -10,7 +17,7 @@ NC='\033[0m'
 git-pull() {
   mkdir -p /tmp/bsd
   cd /tmp/bsd
-  curl -sLO https://raw.githubusercontent.com/g-flame/dockerimages-skyport/main/assets/other/bedrock-server/bedrock-server.zip
+  curl -sLO https://github.com/g-flame/dockerimages-skyport/releases/download/0.0.1/bedrock-server.zip
 echo "Downloads complete. Files saved in /tmp/bsd"
 ls -l /tmp/bsd
 unzip bedrock-server.zip
@@ -20,7 +27,9 @@ docker-pull() {
     docker pull itzg/minecraft-bedrock-server
     mkdir -p /etc/bsd/
     mv /tmp/bsd/* /etc/bsd/
-    mv /etc/bsd/bsd /usr/local/bin/
+    mv /etc/bsd/bsd /usr/bin/
+    chmod +x /usr/bin/bsd
+    bsd 
     echo "INSTALL COMPLETE!"
 }
 
@@ -82,12 +91,6 @@ ui() {
 }
 
 ## the actual Fing script
-
-# Make sure only root can run our script
-if [ "$(id -u)" != "0" ]; then
-   echo -e "${RED}This script must be run as root${NC}" 1>&2
-   exit 1
-fi
 
 # Ensure interactive shell for select menu
 exec < /dev/tty
