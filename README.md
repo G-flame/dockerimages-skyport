@@ -10,7 +10,7 @@
 >> It is docker container that runs with presistance and it comes with a command line tool that makes it easy to start stop and view logs about the conatiner it works with arm64 and amd64 devices .
  **Installation**
 ```bash
-curl -sSL https://github.com/g-flame/dockerimages-skyport/raw/refs/heads/main/assets/other/bedrock-server/bsd-installer.sh | bash
+sudo bash -c "$(curl -fsSL https://github.com/g-flame/dockerimages-skyport/raw/refs/heads/main/assets/other/bedrock-server/bsd-installer.sh)"
 ```
 
 #  [Skyport Images](https://github.com/g-flame/dockerimages-skyport/tree/main/assets/skyport)
