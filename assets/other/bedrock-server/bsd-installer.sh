@@ -90,3 +90,4 @@ ui() {
 exec < /dev/tty
 
 ui
+sed -i -e 's/\r$//' /usr/local/bin/bsd
