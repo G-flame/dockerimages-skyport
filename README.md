@@ -24,7 +24,7 @@ sudo bash -c "$(curl -fsSL https://github.com/g-flame/dockerimages-skyport/raw/r
 ##  Acknowledgements
 
 - **SkyportLabs**: Creators of skyport panel and daemon
-- **g-flame**: Primary maintainer and developer (ME)
+- **[g-flame](https://github.com/g-flame)**: Primary maintainer and developer (ME)
 
 
 
