@@ -1,28 +1,71 @@
-# 🐳 docker & skyport images
+# dockerimages-skyport
 
-## Overview
+<div align="center">
 
-> I make various docker based projects in this repo and publish them to fix the problem that i faced thes are mainly focused to fix issues for arm64 devices but are fully compatible with amd64 too .
+⚠️ **REPOSITORY MOVED** ⚠️
 
-## Projects
-
-#  BSD [Bedrock Server Docker](https://github.com/g-flame/dockerimages-skyport/tree/main/assets/other/bedrock-server)
->> It is docker container that runs with presistance and it comes with a command line tool that makes it easy to start stop and view logs about the conatiner it works with arm64 and amd64 devices .
- **Installation**
-```bash
-sudo bash -c "$(curl -fsSL https://github.com/g-flame/dockerimages-skyport/raw/refs/heads/main/assets/other/bedrock-server/bsd-installer.sh)"
+![Transfer Notice](https://img.shields.io/badge/NOTICE-Repository%20Transferred-red?style=for-the-badge)
+[![New Location](https://img.shields.io/badge/New_Location-g--flame--oss-blue?style=for-the-badge&logo=github)](https://github.com/g-flame-oss/Docker-Projects)
+```diff
+- This repository has been permanently moved to the g-flame-oss organization.
+- Please update your references and bookmarks.
 ```
 
-#  [Skyport Images](https://github.com/g-flame/dockerimages-skyport/tree/main/assets/skyport)
->> Docker images files for skyport panel to run various minecraft server software for java edition works on arm64 and amd64 devices .
+</div>
 
-##  Tech Stack
-![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Bash Script](https://img.shields.io/badge/bash_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) ![JSON](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+## 🚨 Important Notice
 
-##  Acknowledgements
+> **Warning**
+> This repository is no longer maintained at this location. All future updates, issues, and pull requests should be directed to the new repository.
 
-- **SkyportLabs**: Creators of skyport panel and daemon
-- **[g-flame](https://github.com/g-flame)**: Primary maintainer and developer (ME)
+## 📍 New Location
+
+This repository has been transferred to:
+
+
+[Docker-Projects](https://github.com/g-flame-oss/Docker-Projects)
+
+
+<details>
+<summary>📝 Update Instructions</summary>
+
+To update your local repository, run:
+
+```bash
+# Update remote URL
+git remote set-url origin https://github.com/g-flame-oss/Docker-Projects.git
+
+# Verify new remote
+git remote -v
+```
+</details>
+
+## ⚡ Quick Links
+- [Organization Page](https://github.com/g-flame-oss)
+
+## 🔄 What's Changed?
+
+- All existing issues and pull requests have been migrated
+- Star counts have been transferred
+- Existing clones will continue to work, but should be updated
+- Watchers will need to resubscribe at the new location
+
+---
+
+<div align="center">
+
+### Next Steps
+
+[![Visit New Repo](https://img.shields.io/badge/Visit-New%20Repository-success?style=for-the-badge&logo=github)](https://github.com/g-flame-oss/Docker-Projects)
+[![Follow Organization](https://img.shields.io/badge/Follow-g--flame--oss-orange?style=for-the-badge&logo=github)](https://github.com/g-flame-oss)
+
+**Thank you for your understanding and continued support!**
+
+---
+
+_More detailed documentation and features will be added as development progresses._
+
+> ~ g-flame
 
 
 
